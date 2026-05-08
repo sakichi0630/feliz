@@ -1511,5 +1511,19 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
 <button class="lb-nav lb-next" id="lbNext" onclick="lbMove(1)" aria-label="次の画像">›</button>
 <div class="lb-counter" id="lbCounter"></div>
 
+
+<script>
+// 親ページ（Studio.design）に高さを送信
+function sendHeight() {
+  const height = document.body.scrollHeight;
+  window.parent.postMessage({ frameHeight: height }, '*');
+}
+window.addEventListener('load', function() {
+  setTimeout(sendHeight, 500);
+  setTimeout(sendHeight, 1500);
+  setTimeout(sendHeight, 3000);
+});
+window.addEventListener('resize', sendHeight);
+</script>
 </body>
 </html>
